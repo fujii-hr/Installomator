@@ -2,7 +2,7 @@ blender)
     name="Blender"
     type="dmg"
     versionKey="CFBundleShortVersionString"
-    appNewVersion=$(curl -sf https://ftp.nluug.nl/pub/graphics/blender/release/ | grep -o 'Blender[0-9]\+\.[0-9]\+' | cut -d 'r' -f 2 | sort -V | tail -1)
+    appNewVersion=$(curl -sf https://www.blender.org/download/ | grep -o -E 'Blender[0-9]+\.[0-9]+' | grep -o -E '[0-9]+\.[0-9]+' | sort -V | tail -1)
     if [[ $(arch) == "arm64" ]]; then
         archiveName=$(curl -sf "https://ftp.nluug.nl/pub/graphics/blender/release/Blender$appNewVersion/"| grep -o 'blender-[0-9]\+\.[0-9]\+\.[0-9]\+-macos-arm64\.dmg' | sort -V | tail -1)
         downloadURL="https://ftp.nluug.nl/pub/graphics/blender/release/Blender$appNewVersion/$archiveName"
